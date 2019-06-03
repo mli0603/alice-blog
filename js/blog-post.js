@@ -32,7 +32,6 @@ var blogs = [];
 var keyword;
 var mode;
 var error;
-var defaultImage = './posts/default.jpg';
 
 // jQuery main execution function
 $(function(){
@@ -269,6 +268,10 @@ window.on_page_number = function(pageNum){
 /**************************************** tage logic  ****************************************************/
 window.on_tag = function(tag){
 	window.location.href = "./index.html?tag="+tag;
+}
+
+window.on_tag_post = function(tag){
+	window.location.href = "../index.html?tag="+tag;
 }
 
 /**************************************** search logic  ****************************************************/
