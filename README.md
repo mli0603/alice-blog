@@ -48,7 +48,7 @@ After installation, run `npm install` and then run `gulp dev` which will open up
 You must have npm and Gulp installed globally on your machine in order to use these features.
 
 ### Third-party packages
-In order to use Javascript third-party pacakges, it needs to be browser compatible. You can see [browserify](https://github.com/browserify/browserify) for more details.
+In order to use Javascript third-party pacakges, it needs to be browser compatible. You can see [browserify](https://github.com/browserify/browserify) for more details. Currently requires [brfs](https://github.com/browserify/brfs)
 
 ## Copyright and License
 
