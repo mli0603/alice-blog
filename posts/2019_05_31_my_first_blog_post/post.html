@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>It's a bit of Max</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom fonts for this template -->
+		<link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+		<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+		<!-- jQuery CDN -->
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=js&amp;skin=desert"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<!-- Custom styles for this template -->
+		<link href="../../css/clean-blog.min.css" rel="stylesheet">
+
+	</head>
+	<style type="text/css">
+		kbd {
+		  color: #FFF;
+		  background-color: lightblue;
+		}
+		pre {
+			font-size: 15px;
+			tab-size: 4;
+			white-space: pre;
+			/* font-weight: 800;
+		  	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;*/
+		}
+		.img-fluid {
+			margin-left: auto;
+		    margin-right: auto;
+		    display: block;
+		}
+	</style>
+
+	<body>
+
+		<!--Navigation bar-->
+		<div id="nav-placeholder"></div>
+
+		<!-- Page Header -->
+		<header class="masthead" style="background-image: url('../default.jpg')">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-md-10 mx-auto">
+						<div class="post-heading">
+							<h1 id="title">My first blog post</h1>
+							<h2 class="subheading" id="subheading">And some introduction.</h2>
+							<span class="meta">Posted by
+								<a href="../../index.html">Max</a>
+								on May 31st, 2019</span>
+							<kbd id="tag"><a href="javascript:on_tag_post('Life')">Life</a></kbd>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Post Content -->
+		<article>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-md-10 mx-auto">
+						<p>Hi! This is a intro post for my blog. I will go over a few features that I have developed, so that you can fork it and make your own easily.</p>
+
+						<h2 class="section-heading">Automatic pagination</h2>
+
+						<p>The pagination is done by first looking for all files inside the <i>posts</i> folder. Then based on the predefined maximum blog per page, it calculates the necessary number of pages.</p>
+
+						<pre class="prettyprint lang-js">
+function setup_pagination(){
+	$(&quot;#paginator&quot;).html('&lt;div id=&quot;paginator-placeholder&quot;&gt;&lt;/div&gt;');
+	// disable newer when no more newer blogs
+	if (currPage == 1){
+		$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item disabled&quot; id=&quot;newer_button&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_newer_blog()&quot;&gt;&amp;larr; Newer&lt;/a&gt;&lt;/li&gt;');
+	}
+	else{
+		$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item&quot; id=&quot;newer_button&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_newer_blog()&quot;&gt;&amp;larr; Newer&lt;/a&gt;&lt;/li&gt;');
+	}
+
+	// page number
+	for (i = 1; i&lt;= numPage; i++){
+		// make current page active
+		if (currPage == i){
+			$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item active&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_page_number('+i+')&quot;&gt;'+i+'&lt;/a&gt;&lt;/li&gt;');
+		}
+		else{
+			$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_page_number('+i+')&quot;&gt;'+i+'&lt;/a&gt;&lt;/li&gt;');
+		}
+
+	}
+
+	// disable older when no more older blogs
+	if (currPage == numPage){
+		$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item disabled&quot; id=&quot;older_button&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_older_blog()&quot;&gt;Older &amp;rarr;&lt;/a&gt;&lt;/li&gt;');
+	}
+	else{
+		$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item&quot; id=&quot;older_button&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_older_blog()&quot;&gt;Older &amp;rarr;&lt;/a&gt;&lt;/li&gt;');
+	}
+}
+						</pre>
+						<p> As shown here, the <code>currPage</code> variable is the current page the home page is at, and <code>numPage</code> variable is the total number of pages the home page will have to load. I fist examine if I need to disable the <code>Newer</code> button. For example, if I am at the first page, there won't be any newer posts. <pre class="prettyprint">// disable newer when no more newer blogs
+if (currPage == 1){
+	$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item disabled&quot; id=&quot;newer_button&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_newer_blog()&quot;&gt;&amp;larr; Newer&lt;/a&gt;&lt;/li&gt;');
+}</pre>
+						Then, each page number is shown as a button that I can click to jump between. The button of the current page number is highlighted to inform myself which page I am at. <pre class="prettyprint">// make current page active
+if (currPage == i){
+	$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item active&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_page_number('+i+')&quot;&gt;'+i+'&lt;/a&gt;&lt;/li&gt;');
+}</pre>
+						Lastly, a check on <code>Older</code> button is done. If I am looking at the oldest blogs already, this button will be disabled. <pre class="prettyprint">// disable older when no more older blogs
+if (currPage == numPage){
+	$(&quot;#paginator-placeholder&quot;).before('&lt;li class=&quot;page-item disabled&quot; id=&quot;older_button&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;javascript:on_older_blog()&quot;&gt;Older &amp;rarr;&lt;/a&gt;&lt;/li&gt;');
+}</pre>
+						This function utilizes the feature of JS to dynamically update the content of HTML by using <code>$("#OBJECT-NAME")</code>. This is a great way to work around the issue that GitHub can only host static webpages. You will see I use this feature used many times in the code.</p>
+
+						<h2 class="section-heading">Blog loading</h2>
+						<p>Afterwards, the files are parsed into html content.</p>
+						<pre class="prettyprint">
+function parse_html(file,index){
+	// initialize the reader
+	var xhr = new XMLHttpRequest();
+
+	// add event listener
+    xhr.addEventListener(&quot;load&quot;, function() {
+    	load_card(xhr.response,file,index); // callback to load_card
+    }, false);
+
+    // open file and send even
+    xhr.open('GET', file);
+    xhr.send();
+}
+						</pre>
+						<p>This function uses the feature called <code>XMLHttpRequest</code> to request the data of an HTML. This feature is especially nice because I can read the content of each blog without actually loading the whole page. Then I can display a preview of each blog in my home page rather than showing everything. The event listener is registered to a callback function <code>load_card</code> which will then load the content properly into something I called <i>cards</i>, in which the most important information are contained within.</p>
+						<pre class="prettyprint">
+function load_card(content,file,i) {
+	// read content as html
+	parser = new DOMParser();
+	htmlDoc = parser.parseFromString(content,&quot;text/html&quot;);
+
+	if (mode == MODE.INDEX || (mode == MODE.TAG &amp;&amp; htmlDoc.getElementById(&quot;tag&quot;).childNodes[0].innerText == keyword) || (mode == MODE.SEARCH &amp;&amp; htmlDoc.body.textContent.match(RegExp(keyword,&quot;gi&quot;))) ){ // we are in index page or keyword matches, show
+		if (error){ // clear error message
+			error = false;
+			document.getElementById('card-list-placeholder').innerText = '';
+		}
+		var image_folder = file.replace(&quot;.html&quot;,&quot;/&quot;);
+		var date = file.slice(8,18);
+		date = date.split(&quot;_&quot;);
+
+		// add card object to card list
+		document.getElementById('card-list-placeholder').innerHTML += '&lt;div class=&quot;card mb-4&quot; id=&quot;post_'+i.toString()+'&quot;&gt;&lt;/div&gt;';
+		// add image
+		document.getElementById('post_'+i.toString()).innerHTML += '&lt;img class=&quot;card-img-top&quot; src=&quot;'+
+																	image_folder+&quot;cover.jpg&quot;+
+																	'&quot; alt=&quot;Card image cap&quot;/&gt;'; //http://placehold.it/750x300
+		// add title
+		document.getElementById('post_'+i.toString()).innerHTML += '&lt;div class=&quot;card-body&quot;&gt;'+
+																   	'&lt;h2 class=&quot;card-title&quot; align-items-center&gt;'+
+																	htmlDoc.getElementById(&quot;title&quot;).childNodes[0].nodeValue+
+																	'&lt;/h2&gt;';
+
+		// add hyperlink
+		document.getElementById('post_'+i.toString()).innerHTML += '&lt;a href=&quot;'+
+																	file+
+																	'&quot; class=&quot;btn btn-primary&quot;&gt;Read More &amp;rarr;&lt;/a&gt;'+
+																	'&lt;/div&gt;';
+		// add date and tag
+		var tagString = &quot;'&quot;+htmlDoc.getElementById(&quot;tag&quot;).childNodes[0].innerText+&quot;'&quot;
+		document.getElementById('post_'+i.toString()).innerHTML += '&lt;div class=&quot;card-footer text-muted&quot;&gt;Posted on '+month.get(date[1])+&quot; &quot;+date[2]+&quot;, &quot;+date[0]+
+																	'  &lt;kbd id=&quot;tag&quot;&gt;&lt;a href=&quot;javascript:on_tag('+tagString+')&quot;&gt;'+
+																	htmlDoc.getElementById(&quot;tag&quot;).childNodes[0].innerText+'&lt;/a&gt;&lt;/kbd&gt;';
+
+		// in case an image doesnt exist, use default
+		$(&quot;.card-img-top&quot;).on(&quot;error&quot;, function(){
+	        $(this).attr('src', './posts/default.jpg');
+	    });
+	}
+	else{
+		if (error){ // show error message
+			document.getElementById('card-list-placeholder').innerText = 'There is no blog :(';
+		}
+	}
+}
+						</pre>
+						<p>You can see the loaded content which comes with the request is first parsed as a html file. <pre class="prettyprint">// read content as html
+parser = new DOMParser();
+htmlDoc = parser.parseFromString(content,&quot;text/html&quot;);</pre>
+						Then there is the chunk of code that examines which <code>mode</code> I am currently in, which I will discuss in the next section. A card object is created and added to the card list. There are several things are loaded - background, title, a hyperlink to the post, date and tag. All these components will make up the <i>card</i> object and then be displayed on the home page. You can see a screen shot below.</p>
+
+						<img class="img-fluid" src="./card.png" alt="" vertical-align=bottom>
+
+						<span class="caption text-muted">A screen shot of the card object.</span>
+
+						<h2 class="section-heading">Grouping by category and Searching</h2>
+
+						<p>
+							There are three modes for the home page, and in each mode the page will be presented differently:
+							<ul>
+								<li>the default mode: all posts are sorted by the date of written</li>
+								<li>the tag mode: only posts with the tag will be shown</li>
+								<li>the searching mode: only posts with the searck keyword will be shown</li>
+							</ul>
+						</p>
+
+						<p>The grouping and searching functions are achieved by redirecting the page to the home page with additional parameters passed as TAG and KEYWORD. If you look at the link, you should see <code>?tag=TAG</code> or <code>?keyword=KEYWORD</code>. When these parameteres are not empty, the tag or searching mode is triggered. This is a convient way for people to find my blogs. The function to achieve this is shown below:
+						</p>
+						<pre class="prettyprint">
+window.on_tag = function(tag){
+	window.location.href = "./index.html?tag="+tag;
+}
+
+window.on_search = function(keyword){
+	window.location.href = "./index.html?keyword="+keyword;
+}</pre>
+
+				<br>
+				<p>That is all for now! I will try to write another one about the history of surgical robots soon.</p>
+				</div>
+			</div>
+		</article>
+
+		<hr>
+
+		<!--Footer-->
+		<div id="footer-placeholder"></div>
+
+		<!-- Header and footer scripts -->
+		<script>
+			$(function(){
+				$("#nav-placeholder").load("../../nav-post.html");
+			});
+		</script>
+
+		<script>
+			$(function(){
+				$("#footer-placeholder").load("../../footer.html");
+			});
+		</script>
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="../../vendor/jquery/jquery.min.js"></script>
+		<script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="../../js/clean-blog.min.js"></script>
+
+		<!-- tag -->
+		<script src="../../js/blog-bundle.min.js"></script>
+
+	</body>
+
+</html>

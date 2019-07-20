@@ -1,5 +1,6 @@
 // Author: Maxwell Li
 // Date: 2019.05.28
+// This is the source file
 // To load this file into html, run "watchify -t brfs js/blog-post.js -o js/blog-bundle.js"
 
 var fs = require('fs');
@@ -59,6 +60,10 @@ function init_page(){
 		console.log(mode)
 		mode = MODE.INDEX;
 	}
+	// change %20 to space
+	if (keyword){
+		keyword = keyword.replace("%20"," ");
+	}
 	console.log("tag is " + keyword);
 
 	// initialize error message flag to be true
@@ -85,8 +90,9 @@ function search_blog() {
 	var files = fs.readdirSync("./posts/");
 
 	for(var i in files) {
-   		if(path.extname(files[i]) === ".html") {
-   			blogs.push(files[i]);
+		if(path.extname(files[i]) === "") {
+   			blogs.push(files[i] + "/post.html");
+   			console.log(files[i] + "/post.html")
    		}
    	}
 
@@ -178,7 +184,8 @@ function load_card(content,file,i) {
 			error = false;
 			document.getElementById('card-list-placeholder').innerText = '';
 		}
-		var image = file.replace("html","jpg");
+		var image = file.replace("post.html","cover.jpg");
+		console.log(image)
 		var date = file.slice(8,18);
 		date = date.split("_");
 
@@ -271,7 +278,7 @@ window.on_tag = function(tag){
 }
 
 window.on_tag_post = function(tag){
-	window.location.href = "../index.html?tag="+tag;
+	window.location.href = "../../index.html?tag="+tag;
 }
 
 /**************************************** search logic  ****************************************************/

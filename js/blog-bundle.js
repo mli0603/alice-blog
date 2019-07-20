@@ -1,6 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 // Author: Maxwell Li
 // Date: 2019.05.28
+// This is the source file
 // To load this file into html, run "watchify -t brfs js/blog-post.js -o js/blog-bundle.js"
 
 
@@ -60,6 +61,10 @@ function init_page(){
 		console.log(mode)
 		mode = MODE.INDEX;
 	}
+	// change %20 to space
+	if (keyword){
+		keyword = keyword.replace("%20"," ");
+	}
 	console.log("tag is " + keyword);
 
 	// initialize error message flag to be true
@@ -83,11 +88,12 @@ function init_page(){
 
 // function to find all the blog posts
 function search_blog() {
-	var files = ["2019_05_31_my_first_blog_post.html","default.jpg"];
+	var files = ["2019_05_31_my_first_blog_post","2019_07_20_history_of_surgical_robotics","default.jpg"];
 
 	for(var i in files) {
-   		if(path.extname(files[i]) === ".html") {
-   			blogs.push(files[i]);
+		if(path.extname(files[i]) === "") {
+   			blogs.push(files[i] + "/post.html");
+   			console.log(files[i] + "/post.html")
    		}
    	}
 
@@ -179,7 +185,8 @@ function load_card(content,file,i) {
 			error = false;
 			document.getElementById('card-list-placeholder').innerText = '';
 		}
-		var image = file.replace("html","jpg");
+		var image = file.replace("post.html","cover.jpg");
+		console.log(image)
 		var date = file.slice(8,18);
 		date = date.split("_");
 
@@ -272,7 +279,7 @@ window.on_tag = function(tag){
 }
 
 window.on_tag_post = function(tag){
-	window.location.href = "../index.html?tag="+tag;
+	window.location.href = "../../index.html?tag="+tag;
 }
 
 /**************************************** search logic  ****************************************************/
