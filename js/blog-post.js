@@ -120,6 +120,9 @@ function setup_page(){
 		}
 		// load up to blogPerPage blogs (not if the maximum number of blogs have reached)
 		for (i = index; i < iterationLength; i++){
+			// add card object to card list
+			document.getElementById('card-list-placeholder').innerHTML += '<div class="card mb-4" id="post_'+i.toString()+'"></div>';
+			// parse html
 			parse_html("./posts/"+blogs[i],i);
 		}
 	}
@@ -189,8 +192,6 @@ function load_card(content,file,i) {
 		var date = file.slice(8,18);
 		date = date.split("_");
 
-		// add card object to card list
-		document.getElementById('card-list-placeholder').innerHTML += '<div class="card mb-4" id="post_'+i.toString()+'"></div>';
 		// add image
 		document.getElementById('post_'+i.toString()).innerHTML += '<img class="card-img-top" src="'+
 																	image+
