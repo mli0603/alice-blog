@@ -88,7 +88,7 @@ function init_page(){
 
 // function to find all the blog posts
 function search_blog() {
-	var files = ["2019_05_31_my_first_blog_post","2019_07_20_history_of_surgical_robotics","default.jpg"];
+	var files = ["2019_05_31_my_first_blog_post","2019_07_20_history_of_surgical_robotics","2019_07_25_semantics_segmentation_with_adversarial_loss","default.jpg"];
 
 	for(var i in files) {
 		if(path.extname(files[i]) === "") {
@@ -121,7 +121,8 @@ function setup_page(){
 		}
 		// load up to blogPerPage blogs (not if the maximum number of blogs have reached)
 		for (i = index; i < iterationLength; i++){
-			parse_html("./posts/"+blogs[i],i);
+			document.getElementById('card-list-placeholder').innerHTML += '<div class="card mb-4" id="post_'+i.toString()+'"></div>';
+			parse_html("./posts/"+blogs[i],i); // parse html
 		}
 	}
 }
@@ -180,42 +181,39 @@ function load_card(content,file,i) {
 	parser = new DOMParser();
 	htmlDoc = parser.parseFromString(content,"text/html");
 
-	if (mode == MODE.INDEX || (mode == MODE.TAG && htmlDoc.getElementById("tag").childNodes[0].innerText == keyword) || (mode == MODE.SEARCH && htmlDoc.body.textContent.match(RegExp(keyword,"gi"))) ){ // we are in index page or keyword matches, show
-		if (error){ // clear error message
-			error = false;
-			document.getElementById('card-list-placeholder').innerText = '';
-		}
+	card = document.getElementById('post_'+i.toString())
+
+	if (mode == MODE.INDEX || check_tag(mode,keyword) ||  check_search(mode,keyword)){ // we are in index page or keyword matches, show
 		var image = file.replace("post.html","cover.jpg");
-		console.log(image)
 		var date = file.slice(8,18);
 		date = date.split("_");
 
-		// add card object to card list
-		document.getElementById('card-list-placeholder').innerHTML += '<div class="card mb-4" id="post_'+i.toString()+'"></div>';
 		// add image
-		document.getElementById('post_'+i.toString()).innerHTML += '<img class="card-img-top" src="'+
-																	image+
-																	'" alt="Card image cap"/>'; //http://placehold.it/750x300
+		card.innerHTML += '<img class="card-img-top" src="'+
+						image+
+						'" alt="Card image cap"/>'; //http://placehold.it/750x300
 		// add title
-		document.getElementById('post_'+i.toString()).innerHTML += '<div class="card-body">'+
-																   	'<h2 class="card-title" align-items-center>'+
-																	htmlDoc.getElementById("title").childNodes[0].nodeValue+
-																	'</h2>';
+		card.innerHTML += '<div class="card-body">'+
+					   	'<h2 class="card-title" align-items-center>'+
+						htmlDoc.getElementById("title").childNodes[0].nodeValue+
+						'</h2>';
 		// // add subheading
 		// document.getElementById('post_'+i.toString()).innerHTML += '<p class="card-text">'+
 		// 															htmlDoc.getElementById("subheading").childNodes[0].nodeValue+
 		// 															'</p>';
 
 		// add hyperlink
-		document.getElementById('post_'+i.toString()).innerHTML += '<a href="'+
-																	file+
-																	'" class="btn btn-primary">Read More &rarr;</a>'+
-																	'</div>';
+		card.innerHTML += '<a href="'+
+						file+
+						'" class="btn btn-primary">Read More &rarr;</a>'+
+						'</div>';
 		// add date and tag
-		var tagString = "'"+htmlDoc.getElementById("tag").childNodes[0].innerText+"'"
-		document.getElementById('post_'+i.toString()).innerHTML += '<div class="card-footer text-muted">Posted on '+month.get(date[1])+" "+date[2]+", "+date[0]+
-																	'  <kbd id="tag"><a href="javascript:on_tag('+tagString+')">'+
-																	htmlDoc.getElementById("tag").childNodes[0].innerText+'</a></kbd>';
+		var tagString = "'"+
+						htmlDoc.getElementById("tag").childNodes[0].innerText+
+						"'"
+		card.innerHTML += '<div class="card-footer text-muted">Posted on '+month.get(date[1])+" "+date[2]+", "+date[0]+
+						'  <kbd id="tag"><a href="javascript:on_tag('+tagString+')">'+
+						htmlDoc.getElementById("tag").childNodes[0].innerText+'</a></kbd>';
 
 		// in case an image doesnt exist, use default
 		$(".card-img-top").on("error", function(){
@@ -223,10 +221,16 @@ function load_card(content,file,i) {
 	    });
 	}
 	else{
-		if (error){ // show error message
-			document.getElementById('card-list-placeholder').innerText = 'There is no blog :(';
-		}
+		card.parentNode.removeChild(card)
 	}
+}
+
+function check_tag(mode, keyword){
+	return (mode == MODE.TAG && htmlDoc.getElementById("tag").childNodes[0].innerText == keyword)
+}
+
+function check_search(mode, keyword){
+	return (mode == MODE.SEARCH && htmlDoc.body.textContent.match(RegExp(keyword,"gi")))
 }
 
 /**************************************** pagination logic ****************************************************/
