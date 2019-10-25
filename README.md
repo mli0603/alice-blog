@@ -16,7 +16,7 @@ This personal github blog is developed by [Alice](https://github.com/AliceLuo101
 | Blog listing | :v: |
 | Pagination | :v: |
 | Google API | :v: |
-| Interactive portofolio | :v: |
+| Interactive portfolio | :v: |
 | Comment | :sweat: |
 
 ## Download and Installation
@@ -47,8 +47,10 @@ After installation, run `npm install` and then run `gulp dev` which will open up
 
 You must have npm and Gulp installed globally on your machine in order to use these features.
 
-### Third-party packages
-In order to use Javascript third-party pacakges, it needs to be browser compatible. You can see [browserify](https://github.com/browserify/browserify) for more details. Currently requires [brfs](https://github.com/browserify/brfs)
+### Third-party packages/Dependencies
+In order to use Javascript third-party pacakges, it needs to be browser compatible. You can see [browserify](https://github.com/browserify/browserify) for more details.
+
+`watchify -t brfs js/blog-post.js -o js/blog-bundle.js` is required before `gulp dev` to make the javascript browser compatible. 
 
 ## Copyright and License
 
