@@ -92,13 +92,10 @@
                         random patches in the prediction result. One of the potential cause of this problem is due to
                         the lack of the global context awareness. <a
                             href="http://www.cs.jhu.edu/~xingtongl/">Xingtong</a>, the deep learning expert in our lab,
-                        gave me the suggestion of using adversarial loss to mitigate this problem. I have seen great
-                        performance improvement in my project after adopting Xingtong's approach. This idea is very
+                        gave me the suggestion of using adversarial loss to mitigate this problem. This idea is very
                         interesting, yet seems to be under-explored due to the instability of the GAN. I will share some
-                        of my
-                        own experience. However, this post does requires some prior knowledge of GAN and semantics
-                        segmentation. I
-                        recommend to get some background knowledge before reading this post.</p>
+                        of my own experience. However, this post does requires some prior knowledge of GAN and semantics
+                        segmentation. I recommend to get some background knowledge before reading this post.</p>
 
                     <h2 class="section-heading">Semantics Segmentation and Conditional Random Field</h2>
                     <p>Semantics segmentation is a task trying to identify what is what in a given image, i.e. classify
@@ -204,7 +201,8 @@
                     <p>The idea of relativistic discriminator comes from the fact that after discriminator and generator
                         are trained to a perfect state, the learning should come from both real and fake images
                         [6]. What I mean is that <b>the discriminator should be trained to think the real images
-                            are more realistic than the fake ones instead of just thinking both of them look real</b>. Below,
+                            are more realistic than the fake ones instead of just thinking both of them look real</b>.
+                        Below,
                         you can see an example. TThe generator is trained such that all Corgi look like bread. However,
                         because Corgi looks less real than real bread, the discriminator should be able to express his
                         confidence relatively.</p>
@@ -222,7 +220,7 @@
                         result will be better. I have reached the same conclusion as well. The modification is that
                         $$L_D= \| \mathbb{E}_{x\sim\mathbb{P},z\sim\mathbb{Q}}[D(x)-D(G(z))] - 1 \|$$ and $$L_G=\|
                         \mathbb{E}_{x\sim\mathbb{P},z\sim\mathbb{Q}}[D(G(z))-D(x)] - 1 \|$$ </p>
-                    
+
                     <p> If you came across this post and tried this loss, let me know your result! </p>
 
                     <br>
@@ -242,7 +240,8 @@
                     <blockquote>[5] Luc, Pauline, et al. "Semantic segmentation using adversarial networks." arXiv
                         preprint
                         arXiv:1611.08408 (2016).</blockquote>
-                    <blockquote>[6] Jolicoeur-Martineau, Alexia. "The relativistic discriminator: a key element missing from standard GAN." arXiv preprint arXiv:1807.00734 (2018).</blockquote>
+                    <blockquote>[6] Jolicoeur-Martineau, Alexia. "The relativistic discriminator: a key element missing
+                        from standard GAN." arXiv preprint arXiv:1807.00734 (2018).</blockquote>
 
                 </div>
             </div>
