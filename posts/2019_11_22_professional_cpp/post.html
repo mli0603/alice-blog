@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>It's a bit of Max</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- jQuery CDN -->
+    <script
+        src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=cpp"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
+        async></script>
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+<style type="text/css">
+    kbd {
+        color: #FFF;
+        background-color: lightblue;
+    }
+
+    pre {
+        font-size: 15px;
+        tab-size: 4;
+        white-space: pre;
+        /* font-weight: 800;
+		  	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;*/
+    }
+
+    .img-fluid {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    iframe {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+</style>
+
+<body>
+
+    <!--Navigation bar-->
+    <div id="nav-placeholder"></div>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../default.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1 id="title">Professional C++</h1>
+                        <h2 class="subheading" id="subheading">Notes taken from a really good book</h2>
+                        <span class="meta">Posted by
+                            <a href="../index.html">Max</a>
+                            on November 22nd, 2019</span>
+                        <kbd id="tag"><a href="javascript:on_tag_post('C++')">C++</a></kbd>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <p>I have been reading a basic introduction book to C++, called <i>Professional C++</i> by Nicholas
+                    A. Solter and Scott J. Kleper. While I am only at Chapter 7, I feel the content of Chapter 1 already gives a
+                    really good overview of C++ and some suggestions of the low-level techniques. Therefore, I
+                    decided to post some of my
+                    personal notes here. And I encourage you to read the book if you want to get more detailed
+                    content.
+                    </p>
+
+                    <h2 id="strongly-typed-enum">Strongly-typed Enum</h2>
+                    <ul>
+                        <li><code>enum</code> will convert each class to integer</li>
+                        <li><code>enum class</code> will not, and thus recommended<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="ZQBuAHUAbQAgAGMAbABhAHMAcwAgAFAAaQBlAGMAZQBUAHkAcABlAAoAewAKACAAIABLAGkAbgBnACAAPQAgADEALAAKACAAIABRAHUAZQBlAG4ALAAKACAAIABSAG8AbwBrACAAPQAgADEAMAAsAAoAIAAgAFAAYQB3AG4ACgB9ADsA" "=""><span><span class="mtk12">enum</span><span class="mtk1">&nbsp;</span><span class="mtk12">class</span><span class="mtk1">&nbsp;PieceType</span></span><br><span><span class="mtk1">{</span></span><br><span><span class="mtk1">&nbsp;&nbsp;King&nbsp;=&nbsp;</span><span class="mtk22">1</span><span class="mtk1">,</span></span><br><span><span class="mtk1">&nbsp;&nbsp;Queen,</span></span><br><span><span class="mtk1">&nbsp;&nbsp;Rook&nbsp;=&nbsp;</span><span class="mtk22">10</span><span class="mtk1">,</span></span><br><span><span class="mtk1">&nbsp;&nbsp;Pawn</span></span><br><span><span class="mtk1">};</span></span><br></code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                    <h2 id="array">Array</h2>
+                    <ul>
+                        <li>Try to avoid C style array as much as possible<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="aQBuAHQAIABtAHkAQQByAHIAYQB5AFsAMwBdADsACgBpAG4AdAAgAG0AeQBBAHIAcgBhAHkAWwBdACAAPQAgAHsAMQAsADIALAAzAH0AOwA=" "=""><span><span class="mtk12">int</span><span class="mtk1">&nbsp;myArray[</span><span class="mtk22">3</span><span class="mtk1">];</span></span><br><span><span class="mtk12">int</span><span class="mtk1">&nbsp;myArray[]&nbsp;=&nbsp;{</span><span class="mtk22">1</span><span class="mtk1">,</span><span class="mtk22">2</span><span class="mtk1">,</span><span class="mtk22">3</span><span class="mtk1">};</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li>use <code>std::array</code><br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="YQByAHIAYQB5ADwAaQBuAHQALAAgADMAPgAgAGEAcgByACAAPQAgAHsAOQAsACAAOAAsACAANwB9ADsACgBhAHIAcgAuAHMAaQB6AGUAKAApADsAIAAvAC8AIABmAG8AcgAgAGEAcgByAGEAeQAgAHMAaQB6AGUACgBhAHIAcgBbADEAXQA7ACAALwAvACAAZgBvAHIAIABhAHIAcgBhAHkAIAB2AGEAbAB1AGUA" "=""><span><span class="mtk12">array</span><span class="mtk1">&lt;</span><span class="mtk12">int</span><span class="mtk1">,&nbsp;</span><span class="mtk22">3</span><span class="mtk1">&gt;&nbsp;arr&nbsp;=&nbsp;{</span><span class="mtk22">9</span><span class="mtk1">,&nbsp;</span><span class="mtk22">8</span><span class="mtk1">,&nbsp;</span><span class="mtk22">7</span><span class="mtk1">};</span></span><br><span><span class="mtk1">arr.size();&nbsp;</span><span class="mtk4">//&nbsp;for&nbsp;array&nbsp;size</span></span><br><span><span class="mtk1">arr[</span><span class="mtk22">1</span><span class="mtk1">];&nbsp;</span><span class="mtk4">//&nbsp;for&nbsp;array&nbsp;value</span></span><br></code></pre>
+                            </div>
+                            <ul>
+                                <li>Note both <code>std::array</code> and C style array have a fixed size</li>
+                            </ul>
+                        </li>
+                        <li>use <code>std::vector</code><br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="dgBlAGMAdABvAHIAPABpAG4AdAA+ACAAbQB5AFYAZQBjAHQAbwByACAAPQAgAHsAIAAxADEALAAgADIAMgAgAH0AOwAKAG0AeQBWAGUAYwB0AG8AcgAuAHAAdQBzAGgAXwBiAGEAYwBrACgAMQApADsAIAAvAC8AIABhAGQAZAAgAGUAbABlAG0AZQBuAHQACgBtAHkAVgBlAGMAdABvAHIAWwAwAF0AOwAgAC8ALwAgAGEAYwBjAGUAcwBzACAAZQBsAGUAbQBlAG4AdAA=" "=""><span><span class="mtk1">vector&lt;</span><span class="mtk12">int</span><span class="mtk1">&gt;&nbsp;myVector&nbsp;=&nbsp;{&nbsp;</span><span class="mtk22">11</span><span class="mtk1">,&nbsp;</span><span class="mtk22">22</span><span class="mtk1">&nbsp;};</span></span><br><span><span class="mtk1">myVector.push_back(</span><span class="mtk22">1</span><span class="mtk1">);&nbsp;</span><span class="mtk4">//&nbsp;add&nbsp;element</span></span><br><span><span class="mtk1">myVector[</span><span class="mtk22">0</span><span class="mtk1">];&nbsp;</span><span class="mtk4">//&nbsp;access&nbsp;element</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li>Structured bindings
+                            <ul>
+                                <li>must use <code>auto</code><br>
+                                    e.g.</li>
+                            </ul>
+                            <div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="LwAvACAAYQByAHIAYQB5AAoAcwB0AGQAOgA6AGEAcgByAGEAeQA8AGkAbgB0ACwAIAAzAD4AIAB2AGEAbAB1AGUAcwAgAD0AIAB7ACAAMQAxACwAIAAyADIALAAgADMAMwAgAH0AOwAKAGEAdQB0AG8AIABbAHgALAAgAHkALAAgAHoAXQAgAD0AIAB2AGEAbAB1AGUAcwA7ACAALwAvACAAZABlAGMAbABhAHIAZQAgAHYAYQByAGkAYQBiAGwAZQBzAAoACgAvAC8AIABzAHQAcgB1AGMAdAAKAHMAdAByAHUAYwB0ACAAUABvAGkAbgB0ACAAewAgAGQAbwB1AGIAbABlACAAbQBYACwAIABtAFkALAAgAG0AWgA7ACAAfQA7AAoAUABvAGkAbgB0ACAAcABvAGkAbgB0ADsACgBwAG8AaQBuAHQALgBtAFgAIAA9ACAAMQAuADAAOwAgAHAAbwBpAG4AdAAuAG0AWQAgAD0AIAAyAC4AMAA7ACAAcABvAGkAbgB0AC4AbQBaACAAPQAgADMALgAwADsACgBhAHUAdABvACAAWwB4ACwAIAB5ACwAIAB6AF0AIAA9ACAAcABvAGkAbgB0ADsA" "=""><span><span class="mtk4">//&nbsp;array</span></span><br><span><span class="mtk1">std::</span><span class="mtk12">array</span><span class="mtk1">&lt;</span><span class="mtk12">int</span><span class="mtk1">,&nbsp;</span><span class="mtk22">3</span><span class="mtk1">&gt;&nbsp;values&nbsp;=&nbsp;{&nbsp;</span><span class="mtk22">11</span><span class="mtk1">,&nbsp;</span><span class="mtk22">22</span><span class="mtk1">,&nbsp;</span><span class="mtk22">33</span><span class="mtk1">&nbsp;};</span></span><br><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;[x,&nbsp;y,&nbsp;z]&nbsp;=&nbsp;values;&nbsp;</span><span class="mtk4">//&nbsp;declare&nbsp;variables</span></span><br><span><span>&nbsp;</span></span><br><span><span class="mtk4">//&nbsp;struct</span></span><br><span><span class="mtk12">struct</span><span class="mtk1">&nbsp;Point&nbsp;{&nbsp;</span><span class="mtk12">double</span><span class="mtk1">&nbsp;mX,&nbsp;mY,&nbsp;mZ;&nbsp;};</span></span><br><span><span class="mtk1">Point&nbsp;point;</span></span><br><span><span class="mtk1">point.mX&nbsp;=&nbsp;</span><span class="mtk22">1.0</span><span class="mtk1">;&nbsp;point.mY&nbsp;=&nbsp;</span><span class="mtk22">2.0</span><span class="mtk1">;&nbsp;point.mZ&nbsp;=&nbsp;</span><span class="mtk22">3.0</span><span class="mtk1">;</span></span><br><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;[x,&nbsp;y,&nbsp;z]&nbsp;=&nbsp;point;</span></span><br></code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                    <h2 id="loop">Loop</h2>
+                    <ul>
+                        <li>Range-based <code>for</code> loop
+                            <ul>
+                                <li>allow iterating elements with a <strong>copy</strong><br>
+                                    e.g<div class="copy-wrapper">
+                                        <div class="copy" title="Copy Code to Clipboard"></div>
+                                        <pre
+                                            class="prettyprint lang-cpp"><code class="language-cpp" data-code="cwB0AGQAOgA6AGEAcgByAGEAeQA8AGkAbgB0ACwAIAA0AD4AIABhAHIAcgAgAD0AIAB7ADEALAAgADIALAAgADMALAAgADQAfQA7AAoAZgBvAHIAIAAoAGkAbgB0ACAAaQAgADoAIABhAHIAcgApACAAewAKACAAIABzAHQAZAA6ADoAYwBvAHUAdAAgADwAPAAgAGkAIAA8ADwAIABzAHQAZAA6ADoAZQBuAGQAbAA7ACAALwAvACAAbgBvAHQAZQAgAGUAYQBjAGgAIABlAGwAZQBtAGUAbgB0ACAAaQBzACAAYwBvAHAAaQBlAGQAIAB0AG8AIABpACwAIABuAG8AdAAgAHIAZQBmAGUAcgBlAG4AYwBlACEACgB9AA==" "=""><span><span class="mtk1">std::</span><span class="mtk12">array</span><span class="mtk1">&lt;</span><span class="mtk12">int</span><span class="mtk1">,&nbsp;</span><span class="mtk22">4</span><span class="mtk1">&gt;&nbsp;arr&nbsp;=&nbsp;{</span><span class="mtk22">1</span><span class="mtk1">,&nbsp;</span><span class="mtk22">2</span><span class="mtk1">,&nbsp;</span><span class="mtk22">3</span><span class="mtk1">,&nbsp;</span><span class="mtk22">4</span><span class="mtk1">};</span></span><br><span><span class="mtk12">for</span><span class="mtk1">&nbsp;(</span><span class="mtk12">int</span><span class="mtk1">&nbsp;i&nbsp;:&nbsp;arr)&nbsp;{</span></span><br><span><span class="mtk1">&nbsp;&nbsp;std::cout&nbsp;&lt;&lt;&nbsp;i&nbsp;&lt;&lt;&nbsp;std::endl;&nbsp;</span><span class="mtk4">//&nbsp;note&nbsp;each&nbsp;element&nbsp;is&nbsp;copied&nbsp;to&nbsp;i,&nbsp;not&nbsp;reference</span><span class="mtk4">!</span></span><br><span><span class="mtk1">}</span></span><br></code></pre>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Initializer list
+                            <ul>
+                                <li>allow function to have a variable number of arguments<br>
+                                    e.g<div class="copy-wrapper">
+                                        <div class="copy" title="Copy Code to Clipboard"></div>
+                                        <pre
+                                            class="prettyprint lang-cpp"><code class="language-cpp" data-code="IwBpAG4AYwBsAHUAZABlACAAPABpAG4AaQB0AGkAYQBsAGkAegBlAHIAXwBsAGkAcwB0AD4ACgAKAGkAbgB0ACAAbQBhAGsAZQBTAHUAbQAoAGkAbgBpAHQAaQBhAGwAaQB6AGUAcgBfAGwAaQBzAHQAPABpAG4AdAA+ACAAbABzAHQAKQAKAHsACgAgACAAaQBuAHQAIAB0AG8AdABhAGwAIAA9ACAAMAA7AAoAIAAgAGYAbwByACAAKABpAG4AdAAgAHYAYQBsAHUAZQAgADoAIABsAHMAdAApACAAewAKACAAIAAgACAAdABvAHQAYQBsACAAKwA9ACAAdgBhAGwAdQBlADsACgAgACAAfQAKACAAIAByAGUAdAB1AHIAbgAgAHQAbwB0AGEAbAA7AAoAfQA=" "=""><span><span class="mtk12">#include</span><span class="mtk1">&nbsp;</span><span class="mtk12">&lt;</span><span class="mtk1">initializer_list</span><span class="mtk12">&gt;</span></span><br><span><span>&nbsp;</span></span><br><span><span class="mtk12">int</span><span class="mtk1">&nbsp;makeSum(initializer_list&lt;</span><span class="mtk12">int</span><span class="mtk1">&gt;&nbsp;lst)</span></span><br><span><span class="mtk1">{</span></span><br><span><span class="mtk1">&nbsp;&nbsp;</span><span class="mtk12">int</span><span class="mtk1">&nbsp;total&nbsp;=&nbsp;</span><span class="mtk22">0</span><span class="mtk1">;</span></span><br><span><span class="mtk1">&nbsp;&nbsp;</span><span class="mtk12">for</span><span class="mtk1">&nbsp;(</span><span class="mtk12">int</span><span class="mtk1">&nbsp;value&nbsp;:&nbsp;lst)&nbsp;{</span></span><br><span><span class="mtk1">&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;+=&nbsp;value;</span></span><br><span><span class="mtk1">&nbsp;&nbsp;}</span></span><br><span><span class="mtk1">&nbsp;&nbsp;</span><span class="mtk12">return</span><span class="mtk1">&nbsp;total;</span></span><br><span><span class="mtk1">}</span></span><br></code></pre>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h2 id="pointer-and-dynamic-memory">Pointer and Dynamic Memory</h2>
+                    <h3 id="stack">Stack</h3>
+                    <ul>
+                        <li>each function is a stack frame</li>
+                        <li>stack frame lays on top of each other based on execution sequence (latest on the top)</li>
+                        <li>provides <strong>isolated</strong> memory</li>
+                        <li>when function is done, the stack frame is gone, with the variables declared inside, so no
+                            dealloaction needed</li>
+                        <li>variables passed from one function to the other are <strong>copied</strong></li>
+                    </ul>
+                    <h3 id="heap">Heap</h3>
+                    <ul>
+                        <li>heap is independant of any stack frames or functions</li>
+                        <li>it exists even if the function created them are done</li>
+                        <li>the variables need to be <strong>deallocated</strong> unless use <code>smart_pointer</code>
+                        </li>
+                        <li>To put variable on heap
+                            <ul>
+                                <li>use pointer, and pointer should always be initialized with <code>nullptr</code>!
+                                </li>
+                                <li>allocation happens when the <code>new</code> operation is used</li>
+                                <li>pointer needs to be deleted after usage, it is also recommended to set it back to
+                                    <code>nullptr</code><br>
+                                    e.g.<div class="copy-wrapper">
+                                        <div class="copy" title="Copy Code to Clipboard"></div>
+                                        <pre
+                                            class="prettyprint lang-cpp"><code class="language-cpp" data-code="aQBuAHQAIAAqACAAbQB5AEkAbgB0AGUAZwBlAHIAUABvAGkAbgB0AGUAcgAgAD0AIABuAHUAbABsAHAAdAByADsAIAAvAC8AIABjAHIAZQBhAHQAZQAgAHAAbwBpAG4AdABlAHIACgBtAHkASQBuAHQAZQBnAGUAcgBQAG8AaQBuAHQAZQByACAAPQAgAG4AZQB3ACAAaQBuAHQAOwAgAC8ALwAgAGEAbABsAG8AYwBhAHQAZQAgAG0AZQBtAG8AcgB5AAoAKgBtAHkASQBuAHQAZQBnAGUAcgBQAG8AaQBuAHQAZQByACAAPQAgADgAOwAgAC8ALwAgAGEAcwBzAGkAZwBuACAAdgBhAGwAdQBlACAAYgB5ACAAZABlAHIAZQBmAGUAcgBlAG4AYwBlAAoAZABlAGwAZQB0AGUAIABtAHkASQBuAHQAZQBnAGUAcgBQAG8AaQBuAHQAZQByADsAIAAvAC8AIABkAGUAYQBsAGwAbwBjAGEAdABlACAAYQBmAHQAZQByACAAZABvAG4AZQAKAG0AeQBJAG4AdABlAGcAZQByAFAAbwBpAG4AdABlAHIAIAA9ACAAbgB1AGwAbABwAHQAcgA7ACAALwAvACAAcwBlAHQAIAB0AG8AIABuAHUAbABsAHAAdAByACAAdABvACAAYgBlACAAcwBhAGYAZQA=" "=""><span><span class="mtk12">int</span><span class="mtk1">&nbsp;*&nbsp;myIntegerPointer&nbsp;=&nbsp;</span><span class="mtk12">nullptr</span><span class="mtk1">;&nbsp;</span><span class="mtk4">//&nbsp;create&nbsp;pointer</span></span><br><span><span class="mtk1">myIntegerPointer&nbsp;=&nbsp;</span><span class="mtk12">new</span><span class="mtk1">&nbsp;</span><span class="mtk12">int</span><span class="mtk1">;&nbsp;</span><span class="mtk4">//&nbsp;allocate&nbsp;memory</span></span><br><span><span class="mtk1">*myIntegerPointer&nbsp;=&nbsp;</span><span class="mtk22">8</span><span class="mtk1">;&nbsp;</span><span class="mtk4">//&nbsp;assign&nbsp;value&nbsp;by&nbsp;dereference</span></span><br><span><span class="mtk12">delete</span><span class="mtk1">&nbsp;myIntegerPointer;&nbsp;</span><span class="mtk4">//&nbsp;deallocate&nbsp;after&nbsp;done</span></span><br><span><span class="mtk1">myIntegerPointer&nbsp;=&nbsp;</span><span class="mtk12">nullptr</span><span class="mtk1">;&nbsp;</span><span class="mtk4">//&nbsp;set&nbsp;to&nbsp;nullptr&nbsp;to&nbsp;be&nbsp;safe</span></span><br></code></pre>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3 id="pointer">Pointer</h3>
+                    <ul>
+                        <li>Pointer does <strong>NOT</strong> always point to memoery in heap
+                            <ul>
+                                <li>can point to variable on stack or another pointer<br>
+                                    e.g.<div class="copy-wrapper">
+                                        <div class="copy" title="Copy Code to Clipboard"></div>
+                                        <pre
+                                            class="prettyprint lang-cpp"><code class="language-cpp" data-code="aQBuAHQAIABpACAAPQAgADgAOwAKAGkAbgB0ACAAKgAgAG0AeQBJAG4AdABlAGcAZQByAFAAbwBpAG4AdABlAHIAIAA9ACAAJgBpADsAIAAvAC8AIABwAG8AaQBuAHQAcwAgAHQAbwAgAHQAaABlACAAdgBhAHIAaQBhAGIAbABlAA==" "=""><span><span class="mtk12">int</span><span class="mtk1">&nbsp;i&nbsp;=&nbsp;</span><span class="mtk22">8</span><span class="mtk1">;</span></span><br><span><span class="mtk12">int</span><span class="mtk1">&nbsp;*&nbsp;myIntegerPointer&nbsp;=&nbsp;&amp;i;&nbsp;</span><span class="mtk4">//&nbsp;points&nbsp;to&nbsp;the&nbsp;variable</span></span><br></code></pre>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Null pointer converts to <code>false</code> in boolean expression</li>
+                        <li>To avoid invalid pointer, can evaluate the pointer first<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="YgBvAG8AbAAgAGkAcwBWAGEAbABpAGQAUwBhAGwAYQByAHkAIAA9ACAAKABhAG4ARQBtAHAAbABvAHkAZQBlACAAJgAmACAAYQBuAEUAbQBwAGwAbwB5AGUAZQAtAD4AcwBhAGwAYQByAHkAIAA+ACAAMAApADsAIAAvAC8AIABhAG4ARQBtAHAAbABvAHkAZQBlACAAaQBzACAAYQAgAHAAbwBpAG4AdABlAHIA" "=""><span><span class="mtk12">bool</span><span class="mtk1">&nbsp;isValidSalary&nbsp;=&nbsp;(anEmployee&nbsp;&amp;&amp;&nbsp;anEmployee-&gt;salary</span><span class="mtk1">&nbsp;&gt;&nbsp;</span><span class="mtk22">0</span><span class="mtk1">);&nbsp;</span><span class="mtk4">//&nbsp;anEmployee&nbsp;is&nbsp;a&nbsp;pointer</span></span><br></code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                    <h3 id="dynamic-allocated-arrays">Dynamic Allocated Arrays</h3>
+                    <ul>
+                        <li>Array that lives on heap</li>
+                        <li>Can be allocated same as variable, but with <code>[]</code><br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="aQBuAHQAIABhAHIAcgBhAHkAUwBpAHoAZQAgAD0AIAA4ADsACgBpAG4AdAAqACAAbQB5AFYAYQByAGkAYQBiAGwAZQBTAGkAegBlAGQAQQByAHIAYQB5ACAAPQAgAG4AZQB3ACAAaQBuAHQAWwBhAHIAcgBhAHkAUwBpAHoAZQBdADsAIAAvAC8AIABhAGwAbABvAGMAYQB0AGUAIABtAGUAbQBvAHIAeQAKAAoAbQB5AFYAYQByAGkAYQBiAGwAZQBTAGkAegBlAGQAQQByAHIAYQB5AFsAMwBdACAAPQAgADIAOwAgAC8ALwAgAGEAcwBzAGkAZwBuACAAdgBhAGwAdQBlAAoACgBkAGUAbABlAHQAZQBbAF0AIABtAHkAVgBhAHIAaQBhAGIAbABlAFMAaQB6AGUAZABBAHIAcgBhAHkAOwAgAC8ALwAgAGQAZQBsAGUAdABlAAoAbQB5AFYAYQByAGkAYQBiAGwAZQBTAGkAegBlAGQAQQByAHIAYQB5ACAAPQAgAG4AdQBsAGwAcAB0AHIAOwA=" "=""><span><span class="mtk12">int</span><span class="mtk1">&nbsp;arraySize&nbsp;=&nbsp;</span><span class="mtk22">8</span><span class="mtk1">;</span></span><br><span><span class="mtk12">int</span><span class="mtk1">*&nbsp;myVariableSizedArray&nbsp;=&nbsp;</span><span class="mtk12">new</span><span class="mtk1">&nbsp;</span><span class="mtk12">int</span><span class="mtk1">[arraySize];&nbsp;</span><span class="mtk4">//&nbsp;allocate&nbsp;memory</span></span><br><span><span>&nbsp;</span></span><br><span><span class="mtk1">myVariableSizedArray[</span><span class="mtk22">3</span><span class="mtk1">]&nbsp;=&nbsp;</span><span class="mtk22">2</span><span class="mtk1">;&nbsp;</span><span class="mtk4">//&nbsp;assign&nbsp;value</span></span><br><span><span>&nbsp;</span></span><br><span><span class="mtk12">delete</span><span class="mtk1">[]&nbsp;myVariableSizedArray;&nbsp;</span><span class="mtk4">//&nbsp;delete</span></span><br><span><span class="mtk1">myVariableSizedArray&nbsp;=&nbsp;</span><span class="mtk12">nullptr</span><span class="mtk1">;</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li><strong>AVOID</strong> <code>malloc</code> and <code>free</code> from C,
+                            <strong>USE</strong> <code>new</code> and <code>delete</code></li>
+                        <li>always pair <code>new</code> with <code>delete</code> and <code>new[]</code> with
+                            <code>delete[]</code></li>
+                    </ul>
+                    <h3 id="smart-pointer">Smart pointer</h3>
+                    <ul>
+                        <li>Smart pointers automatically deallocate memory when the smart pointer object goes out of
+                            scope</li>
+                        <li><code>std::unique_ptr</code> is analogous to ordinary pointer<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="YQB1AHQAbwAgAGEAbgBFAG0AcABsAG8AeQBlAGUAIAA9ACAAbQBhAGsAZQBfAHUAbgBpAHEAdQBlADwARQBtAHAAbABvAHkAZQBlAD4AKAApADsACgAvAC8AIABvAHIACgB1AG4AaQBxAHUAZQBfAHAAdAByADwARQBtAHAAbABvAHkAZQBlAD4AIABhAG4ARQBtAHAAbABvAHkAZQBlACgAbgBlAHcAIABFAG0AcABsAG8AeQBlAGUAKQA7AAoACgAvAC8AIABlAHEAdQBpAHYAYQBsAGUAbgB0ACAAdABvAAoARQBtAHAAbABvAHkAZQBlACoAIABhAG4ARQBtAHAAbABvAHkAZQBlACAAPQAgAG4AZQB3ACAARQBtAHAAbABvAHkAZQBlADsACgBkAGUAbABlAHQAZQAgAGEAbgBFAG0AcABsAG8AeQBlAGUAOwA=" "=""><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;anEmployee&nbsp;=&nbsp;make_unique&lt;Employee&gt;();</span></span><br><span><span class="mtk4">//&nbsp;or</span></span><br><span><span class="mtk1">unique_ptr&lt;Employee&gt;&nbsp;anEmployee(</span><span class="mtk12">new</span><span class="mtk1">&nbsp;Employee);</span></span><br><span><span>&nbsp;</span></span><br><span><span class="mtk4">//&nbsp;equivalent&nbsp;to</span></span><br><span><span class="mtk1">Employee*&nbsp;anEmployee&nbsp;=&nbsp;</span><span class="mtk12">new</span><span class="mtk1">&nbsp;Employee;</span></span><br><span><span class="mtk12">delete</span><span class="mtk1">&nbsp;anEmployee;</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li><code>std::shared_ptr</code> allows pointer to shared<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="YQB1AHQAbwAgAGEAbgBFAG0AcABsAG8AeQBlAGUAIAA9ACAAbQBhAGsAZQBfAHMAaABhAHIAZQBkADwARQBtAHAAbABvAHkAZQBlAD4AKAApADsA" "=""><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;anEmployee&nbsp;=&nbsp;make_shared&lt;Employee&gt;();</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li>use <code>std::unique_ptr</code> by <strong>DEFAULT</strong>, and
+                            <code>std::shared_ptr</code> when needed</li>
+                    </ul>
+                    <h2 id="const">Const</h2>
+                    <ul>
+                        <li>Define constants<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="YwBvAG4AcwB0ACAAaQBuAHQAIAB2AGUAcgBzAGkAbwBuAE4AdQBtAGIAZQByAE0AYQBqAG8AcgAgAD0AIAAyADsACgBjAG8AbgBzAHQAIABpAG4AdAAgAHYAZQByAHMAaQBvAG4ATgB1AG0AYgBlAHIATQBpAG4AbwByACAAPQAgADEAOwAKAGMAbwBuAHMAdAAgAHMAdABkADoAOgBzAHQAcgBpAG4AZwAgAHAAcgBvAGQAdQBjAHQATgBhAG0AZQAgAD0AIAAiAFMAdQBwAGUAcgAgAEgAeQBwAGUAcgAgAE4AZQB0ACAATQBvAGQAdQBsAGEAdABvAHIAIgA=" "=""><span><span class="mtk12">const</span><span class="mtk1">&nbsp;</span><span class="mtk12">int</span><span class="mtk1">&nbsp;versionNumberMajor&nbsp;=&nbsp;</span><span class="mtk22">2</span><span class="mtk1">;</span></span><br><span><span class="mtk12">const</span><span class="mtk1">&nbsp;</span><span class="mtk12">int</span><span class="mtk1">&nbsp;versionNumberMinor&nbsp;=&nbsp;</span><span class="mtk22">1</span><span class="mtk1">;</span></span><br><span><span class="mtk12">const</span><span class="mtk1">&nbsp;std::string&nbsp;productName&nbsp;=&nbsp;</span><span class="mtk1">"Super&nbsp;Hyper&nbsp;Net&nbsp;Modulator"</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li>Protect change to variables<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="dgBvAGkAZAAgAG0AeQBzAHQAZQByAHkARgB1AG4AYwB0AGkAbwBuACgAYwBvAG4AcwB0ACAAcwB0AGQAOgA6AHMAdAByAGkAbgBnACoAIABzAG8AbQBlAFMAdAByAGkAbgBnACkACgB7AAoAIAAgACoAcwBvAG0AZQBTAHQAcgBpAG4AZwAgAD0AIAAiAFQAZQBzAHQAIgA7ACAALwAvACAAVwBpAGwAbAAgAG4AbwB0ACAAYwBvAG0AcABpAGwAZQAuAAoAfQA=" "=""><span><span class="mtk12">void</span><span class="mtk1">&nbsp;mysteryFunction(</span><span class="mtk12">const</span><span class="mtk1">&nbsp;std::string*&nbsp;someString)</span></span><br><span><span class="mtk1">{</span></span><br><span><span class="mtk1">&nbsp;&nbsp;*someString&nbsp;=&nbsp;</span><span class="mtk1">"Test"</span><span class="mtk1">;&nbsp;</span><span class="mtk4">//&nbsp;Will&nbsp;not&nbsp;compile.</span></span><br><span><span class="mtk1">}</span></span><br></code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                    <h2 id="pass-by-references">Pass by References</h2>
+                    <ul>
+                        <li>Avoid copying large class or structures<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"></div>
+                                <pre class="prettyprint lang-cpp"><code>void addOne(int i)
+                    {
+                    i++; // Has no real effect because this is a copy of the original
+                    }
+                    void addOne(int&amp; i)
+                    {
+                    i++; // Actually changes the original variable
+                    }
+                    </code></pre>
+                            </div>
+                        </li>
+                        <li>pass by <code>const</code> reference
+                            <ul>
+                                <li>avoid coppying</li>
+                                <li>avoid changing variable</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h2 id="type-inference">Type Inference</h2>
+                    <ul>
+                        <li><code>auto</code>:
+                            <ul>
+                                <li><strong>strips away</strong> reference and const, and makes a <strong>copy</strong>
+                                    <ul>
+                                        <li>to fix it, use <code>auto &amp;</code> or <code>const auto &amp;</code></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><code>decltype</code>
+                            <ul>
+                                <li>takes expression as argument and computes the type<div class="copy-wrapper">
+                                        <div class="copy" title="Copy Code to Clipboard"></div>
+                                        <pre
+                                            class="prettyprint lang-cpp"><code class="language-cpp" data-code="aQBuAHQAIAB4ACAAPQAgADEAMgAzADsACgBkAGUAYwBsAHQAeQBwAGUAKAB4ACkAIAB5ACAAPQAgADQANQA2ADsA" "=""><span><span class="mtk12">int</span><span class="mtk1">&nbsp;x&nbsp;=&nbsp;</span><span class="mtk22">123</span><span class="mtk1">;</span></span><br><span><span class="mtk12">decltype</span><span class="mtk1">(x)&nbsp;y&nbsp;=&nbsp;</span><span class="mtk22">456</span><span class="mtk1">;</span></span><br></code></pre>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h2 id="class">Class</h2>
+                    <h3 id="defining-class">Defining class</h3>
+                    <ul>
+                        <li>classes are usually defined in a header file (.h)</li>
+                        <li>while their definitions usually are in a corresponding source file (.cpp).</li>
+                        <li>It is recommended to make <strong>ALL</strong> data members <code>private</code>, and give
+                            access to them via <code>public</code> getters and setters</li>
+                        <li><strong>prefix data member with <code>m</code></strong></li>
+                        <li><strong>prefix constants with <code>k</code></strong></li>
+                        <li>declare member functions that do not change any data members of an object being
+                            <code>const</code>
+                            <ul>
+                                <li>these functions are usually called "inspector"<br>
+                                    e.g.<div class="copy-wrapper">
+                                        <div class="copy" title="Copy Code to Clipboard"><i
+                                                class="icon small">content_copy</i></div>
+                                        <pre
+                                            class="prettyprint lang-cpp"><code class="language-cpp" data-code="aQBuAHQAIABnAGUAdABOAHUAbQBiAGUAcgBPAGYATQBpAGwAZQBzACgAKQAgAGMAbwBuAHMAdAA7AA==" "=""><span><span class="mtk12">int</span><span class="mtk1">&nbsp;getNumberOfMiles()&nbsp;</span><span class="mtk12">const</span><span class="mtk1">;</span></span><br></code></pre>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h3 id="initialize-data-members">Initialize data members</h3>
+                    <ul>
+                        <li>constructor initializer<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"><i class="icon small">content_copy</i>
+                                </div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="QQBpAHIAbABpAG4AZQBUAGkAYwBrAGUAdAA6ADoAQQBpAHIAbABpAG4AZQBUAGkAYwBrAGUAdAAoACkACgAgACAAOgAgAG0AUABhAHMAcwBlAG4AZwBlAHIATgBhAG0AZQAoACIAVQBuAGsAbgBvAHcAbgAgAFAAYQBzAHMAZQBuAGcAZQByACIAKQAKACAAIAAsACAAbQBOAHUAbQBiAGUAcgBPAGYATQBpAGwAZQBzACgAMAApAAoAIAAgACwAIABtAEgAYQBzAEUAbABpAHQAZQBTAHUAcABlAHIAUgBlAHcAYQByAGQAcwBTAHQAYQB0AHUAcwAoAGYAYQBsAHMAZQApAAoAewB9AA==" "=""><span><span class="mtk1">AirlineTicket::AirlineTicket()</span></span><br><span><span class="mtk1">&nbsp;&nbsp;:&nbsp;mPassengerName(</span><span class="mtk1">"Unknown&nbsp;Passenger"</span><span class="mtk1">)</span></span><br><span><span class="mtk1">&nbsp;&nbsp;,&nbsp;mNumberOfMiles(</span><span class="mtk22">0</span><span class="mtk1">)</span></span><br><span><span class="mtk1">&nbsp;&nbsp;,&nbsp;mHasEliteSuperRewardsStatus(</span><span class="mtk12">false</span><span class="mtk1">)</span></span><br><span><span class="mtk1">{}</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li>initialize in body of constructor<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"><i class="icon small">content_copy</i>
+                                </div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="QQBpAHIAbABpAG4AZQBUAGkAYwBrAGUAdAA6ADoAQQBpAHIAbABpAG4AZQBUAGkAYwBrAGUAdAAoACkACgB7AAoAIAAgAC8ALwAgAEkAbgBpAHQAaQBhAGwAaQB6AGUAIABkAGEAdABhACAAbQBlAG0AYgBlAHIAcwAKACAAIABtAFAAYQBzAHMAZQBuAGcAZQByAE4AYQBtAGUAIAA9ACAAIgBVAG4AawBuAG8AdwBuACAAUABhAHMAcwBlAG4AZwBlAHIAIgA7AAoAIAAgAG0ATgB1AG0AYgBlAHIATwBmAE0AaQBsAGUAcwAgAD0AIAAwADsACgAgACAAbQBIAGEAcwBFAGwAaQB0AGUAUwB1AHAAZQByAFIAZQB3AGEAcgBkAHMAUwB0AGEAdAB1AHMAIAA9ACAAZgBhAGwAcwBlADsACgB9AA==" "=""><span><span class="mtk1">AirlineTicket::AirlineTicket()</span></span><br><span><span class="mtk1">{</span></span><br><span><span class="mtk1">&nbsp;&nbsp;</span><span class="mtk4">//&nbsp;Initialize&nbsp;data&nbsp;members</span></span><br><span><span class="mtk1">&nbsp;&nbsp;mPassengerName&nbsp;=&nbsp;</span><span class="mtk1">"Unknown&nbsp;Passenger"</span><span class="mtk1">;</span></span><br><span><span class="mtk1">&nbsp;&nbsp;mNumberOfMiles&nbsp;=&nbsp;</span><span class="mtk22">0</span><span class="mtk1">;</span></span><br><span><span class="mtk1">&nbsp;&nbsp;mHasEliteSuperRewardsStatus&nbsp;=&nbsp;</span><span class="mtk12">false</span><span class="mtk1">;</span></span><br><span><span class="mtk1">}</span></span><br></code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                    <h3 id="stack-vs-heap">Stack vs Heap</h3>
+                    <ul>
+                        <li>Stack based classes<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"><i class="icon small">content_copy</i>
+                                </div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="QQBpAHIAbABpAG4AZQBUAGkAYwBrAGUAdAAgAG0AeQBUAGkAYwBrAGUAdAA7ACAALwAvACAAUwB0AGEAYwBrAC0AYgBhAHMAZQBkACAAQQBpAHIAbABpAG4AZQBUAGkAYwBrAGUAdAAKAG0AeQBUAGkAYwBrAGUAdAAuAHMAZQB0AFAAYQBzAHMAZQBuAGcAZQByAE4AYQBtAGUAKAAiAFMAaABlAHIAbQBhAG4AIABUAC4AIABTAG8AYwBrAGUAdAB3AHIAZQBuAGMAaAAiACkAOwA=" "=""><span><span class="mtk1">AirlineTicket&nbsp;myTicket;&nbsp;</span><span class="mtk4">//&nbsp;Stack-based&nbsp;AirlineTicket</span></span><br><span><span class="mtk1">myTicket.setPassengerName(</span><span class="mtk1">"Sherman&nbsp;T.&nbsp;Socketwrench"</span><span class="mtk1">);</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li>Heap based classes<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"><i class="icon small">content_copy</i>
+                                </div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="YQB1AHQAbwAgAG0AeQBUAGkAYwBrAGUAdAAyACAAPQAgAG0AYQBrAGUAXwB1AG4AaQBxAHUAZQA8AEEAaQByAGwAaQBuAGUAVABpAGMAawBlAHQAPgAoACkAOwAgAC8ALwAgAEgAZQBhAHAALQBiAGEAcwBlAGQAIABBAGkAcgBsAGkAbgBlAFQAaQBjAGsAZQB0AAoAbQB5AFQAaQBjAGsAZQB0ADIALQA+AHMAZQB0AFAAYQBzAHMAZQBuAGcAZQByAE4AYQBtAGUAKAAiAEwAYQB1AGQAaQBtAG8AcgBlACAATQAuACAASABhAGwAbABpAGQAdQBlACIAKQA7AA==" "=""><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;myTicket2&nbsp;=&nbsp;make_unique&lt;AirlineTicket&gt;();&nbsp;</span><span class="mtk4">//&nbsp;Heap-based&nbsp;AirlineTicket</span></span><br><span><span class="mtk1">myTicket2-&gt;setPassengerName(</span><span class="mtk1">"Laudimore&nbsp;M.&nbsp;Hallidue"</span><span class="mtk1">);</span></span><br></code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                    <h1 id="initialization">Initialization</h1>
+                    <h2 id="uniform-initialization">Uniform initialization</h2>
+                    <ul>
+                        <li>post C++ 11, can initialize everything with <code>{}</code><br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"><i class="icon small">content_copy</i>
+                                </div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="QwBpAHIAYwBsAGUAUwB0AHIAdQBjAHQAIABtAHkAQwBpAHIAYwBsAGUANQB7ADEAMAAsACAAMQAwACwAIAAyAC4ANQB9ADsACgBDAGkAcgBjAGwAZQBDAGwAYQBzAHMAIABtAHkAQwBpAHIAYwBsAGUANgB7ADEAMAAsACAAMQAwACwAIAAyAC4ANQB9ADsACgBpAG4AdAAgAGQAewAzAH0AOwAgAC8ALwAgAGEAcwBzAGkAZwBuACAAZAAgAHQAbwAgADMA" "=""><span><span class="mtk1">CircleStruct&nbsp;myCircle5{</span><span class="mtk22">10</span><span class="mtk1">,&nbsp;</span><span class="mtk22">10</span><span class="mtk1">,&nbsp;</span><span class="mtk22">2.5</span><span class="mtk1">};</span></span><br><span><span class="mtk1">CircleClass&nbsp;myCircle6{</span><span class="mtk22">10</span><span class="mtk1">,&nbsp;</span><span class="mtk22">10</span><span class="mtk1">,&nbsp;</span><span class="mtk22">2.5</span><span class="mtk1">};</span></span><br><span><span class="mtk12">int</span><span class="mtk1">&nbsp;d{</span><span class="mtk22">3</span><span class="mtk1">};&nbsp;</span><span class="mtk4">//&nbsp;assign&nbsp;d&nbsp;to&nbsp;3</span></span><br></code></pre>
+                            </div>
+                        </li>
+                        <li>Can be used to avoid narrowing<br>
+                            e.g.<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"><i class="icon small">content_copy</i>
+                                </div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="aQBuAHQAIABhACAAPQAgAHsAMwAuADEANAB9ADsAIAAvAC8AIAB0AGgAaQBzACAAdwBpAGwAbAAgAG4AbwB0ACAAYwBvAG0AcABpAGwAZQAKAGkAbgB0ACAAYQAgAD0AIAAzAC4AMQA0ADsAIAAvAC8AIABhACAAPQAgADMA" "=""><span><span class="mtk12">int</span><span class="mtk1">&nbsp;a&nbsp;=&nbsp;{</span><span class="mtk22">3.14</span><span class="mtk1">};&nbsp;</span><span class="mtk4">//&nbsp;this&nbsp;will&nbsp;not&nbsp;compile</span></span><br><span><span class="mtk12">int</span><span class="mtk1">&nbsp;a&nbsp;=&nbsp;</span><span class="mtk22">3.14</span><span class="mtk1">;&nbsp;</span><span class="mtk4">//&nbsp;a&nbsp;=&nbsp;3</span></span><br></code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                    <h2 id="direct-vs-copy-initialization">Direct vs Copy initialization</h2>
+                    <ul>
+                        <li>post C++ 17,<div class="copy-wrapper">
+                                <div class="copy" title="Copy Code to Clipboard"><i class="icon small">content_copy</i>
+                                </div>
+                                <pre
+                                    class="prettyprint lang-cpp"><code class="language-cpp" data-code="LwAvACAAQwBvAHAAeQAgAGwAaQBzAHQAIABpAG4AaQB0AGkAYQBsAGkAegBhAHQAaQBvAG4ACgBhAHUAdABvACAAYQAgAD0AIAB7ADEAMQB9ADsAIAAvAC8AIABpAG4AaQB0AGkAYQBsAGkAegBlAHIAXwBsAGkAcwB0ADwAaQBuAHQAPgAKAGEAdQB0AG8AIABiACAAPQAgAHsAMQAxACwAIAAyADIAfQA7ACAALwAvACAAaQBuAGkAdABpAGEAbABpAHoAZQByAF8AbABpAHMAdAA8AGkAbgB0AD4ACgAvAC8AIABEAGkAcgBlAGMAdAAgAGwAaQBzAHQAIABpAG4AaQB0AGkAYQBsAGkAegBhAHQAaQBvAG4ACgBhAHUAdABvACAAYwAgAHsAMQAxAH0AOwAgAC8ALwAgAGkAbgB0AAoAYQB1AHQAbwAgAGQAIAB7ADEAMQAsACAAMgAyAH0AOwAgAC8ALwAgAEUAcgByAG8AcgAsACAAdABvAG8AIABtAGEAbgB5ACAAZQBsAGUAbQBlAG4AdABzAC4A" "=""><span><span class="mtk4">//&nbsp;Copy&nbsp;list&nbsp;initialization</span></span><br><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;a&nbsp;=&nbsp;{</span><span class="mtk22">11</span><span class="mtk1">};&nbsp;</span><span class="mtk4">//&nbsp;initializer_list&lt;int&gt;</span></span><br><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;b&nbsp;=&nbsp;{</span><span class="mtk22">11</span><span class="mtk1">,&nbsp;</span><span class="mtk22">22</span><span class="mtk1">};&nbsp;</span><span class="mtk4">//&nbsp;initializer_list&lt;int&gt;</span></span><br><span><span class="mtk4">//&nbsp;Direct&nbsp;list&nbsp;initialization</span></span><br><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;c&nbsp;{</span><span class="mtk22">11</span><span class="mtk1">};&nbsp;</span><span class="mtk4">//&nbsp;int</span></span><br><span><span class="mtk12">auto</span><span class="mtk1">&nbsp;d&nbsp;{</span><span class="mtk22">11</span><span class="mtk1">,&nbsp;</span><span class="mtk22">22</span><span class="mtk1">};&nbsp;</span><span class="mtk4">//&nbsp;Error,&nbsp;too&nbsp;many&nbsp;elements.</span></span><br></code></pre>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </article>
+
+    <hr>
+
+    <!--Footer-->
+    <div id="footer-placeholder"></div>
+
+    <!-- Header and footer scripts -->
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("../../nav-post.html");
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#footer-placeholder").load("../../footer.html");
+        });
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../../js/clean-blog.min.js"></script>
+
+    <!-- tag -->
+    <script src="../../js/blog-bundle.min.js"></script>
+
+</body>
+
+</html>
