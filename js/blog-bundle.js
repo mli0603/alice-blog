@@ -88,7 +88,7 @@ function init_page(){
 
 // function to find all the blog posts
 function search_blog() {
-	var files = ["2019_05_31_my_first_blog_post","2019_07_20_history_of_surgical_robotics","2019_07_25_semantics_segmentation_with_adversarial_loss","2019_11_22_professional_cpp","default.jpg"];
+	var files = ["2019_05_31_my_first_blog_post","2019_07_20_history_of_surgical_robotics","2019_07_25_semantics_segmentation_with_adversarial_loss","2019_11_22_professional_cpp","2020_02_04_petition","default.jpg"];
 
 	for(var i in files) {
 		if(path.extname(files[i]) === "") {
