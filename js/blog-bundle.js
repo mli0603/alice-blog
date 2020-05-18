@@ -1,5 +1,5 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-// Author: Maxwell Li
+// Author: Max Li
 // Date: 2019.05.28
 // This is the source file
 // To load this file into html, run "watchify -t brfs js/blog-post.js -o js/blog-bundle.js"
@@ -88,7 +88,7 @@ function init_page(){
 
 // function to find all the blog posts
 function search_blog() {
-	var files = ["2019_05_31_my_first_blog_post","2019_07_20_history_of_surgical_robotics","2019_07_25_semantics_segmentation_with_adversarial_loss","2019_11_22_professional_cpp","2020_02_04_petition","default.jpg"];
+	var files = ["2019_05_31_my_first_blog_post","2019_07_20_history_of_surgical_robotics","2019_07_25_semantics_segmentation_with_adversarial_loss","2019_11_22_professional_cpp","2020_02_04_petition","2020_05_18 python_indexing","default.jpg"];
 
 	for(var i in files) {
 		if(path.extname(files[i]) === "") {

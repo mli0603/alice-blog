@@ -1,4 +1,4 @@
-// Author: Maxwell Li
+// Author: Max Li
 // Date: 2019.05.28
 // This is the source file
 // To load this file into html, run "watchify -t brfs js/blog-post.js -o js/blog-bundle.js"
