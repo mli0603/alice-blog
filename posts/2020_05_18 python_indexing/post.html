@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>It's a bit of Max</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- jQuery CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=cpp"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
+        async></script>
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+<style type="text/css">
+    kbd {
+        color: #FFF;
+        background-color: lightblue;
+    }
+
+    pre {
+        font-size: 15px;
+        tab-size: 4;
+        white-space: pre;
+        /* font-weight: 800;
+		  	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;*/
+    }
+
+    .img-fluid {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    iframe {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+</style>
+
+<body>
+
+    <!--Navigation bar-->
+    <div id="nav-placeholder"></div>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../default.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1 id="title">Python Programming - Indexing</h1>
+                        <h2 class="subheading" id="subheading">Note about Python indexing</h2>
+                        <span class="meta">Posted by
+                            <a href="../index.html">Max</a>
+                            on May 18th, 2020</span>
+                        <kbd id="tag"><a href="javascript:on_tag_post('Programming')">Programming</a></kbd>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <p>Indexing is probably the quickest way to access data in a numpy array or in a PyTorch tensor.
+                        Here is my personal note of how indexing works in python.</p>
+                    <div class="copy-wrapper">
+                        <pre class="prettyprint lang-python"><code class="language-python" data-code="IwAgAGEAbgAgAGUAeABhAG0AcABsAGUACgB4ACAAPQAgAG4AcAAuAGEAcgByAGEAeQAoAFsAWwBbADEAXQAsAFsAMgBdACwAWwAzAF0AXQAsACAAWwBbADQAXQAsAFsANQBdACwAWwA2AF0AXQBdACkACgB4AC4AcwBoAGEAcABlACAAIwAgACgAMgAsACAAMwAsACAAMQApAA==" "=""><span><span class="mtk4">#&nbsp;an&nbsp;example</span></span><br><span><span class="mtk1">x&nbsp;=&nbsp;np.array([[[</span><span class="mtk22">1</span><span class="mtk1">],[</span><span class="mtk22">2</span><span class="mtk1">],[</span><span class="mtk22">3</span><span class="mtk1">]],&nbsp;[[</span><span class="mtk22">4</span><span class="mtk1">],[</span><span class="mtk22">5</span><span class="mtk1">],[</span><span class="mtk22">6</span><span class="mtk1">]]])</span></span><br><span><span class="mtk1">x.shape&nbsp;</span><span class="mtk4">#&nbsp;(2,&nbsp;3,&nbsp;1)</span></span><br></code></pre>
+                    </div>
+                    <h4 id="expand-dimension">Expand dimension</h4>
+                    We can use <code>None</code> to expand a dimension.
+                    <div class="copy-wrapper">
+                        <pre class="prettyprint lang-python"><code class="language-python" data-code="eABbAE4AbwBuAGUALABdAC4AcwBoAGEAcABlACAAIwAgACgAMQAsACAAMgAsACAAMwAsACAAMQApAA==" "=""><span><span class="mtk1">x[</span><span class="mtk12">None</span><span class="mtk1">,].shape&nbsp;</span><span class="mtk4">#&nbsp;(1,&nbsp;2,&nbsp;3,&nbsp;1)</span></span><br></code></pre>
+                    </div>
+                    <h4 id="ellipsis">Ellipsis</h4>
+                    We can use <code>...</code> to avoid writing <code>:</code> for each dimension.
+                    <div class="copy-wrapper">
+                        <pre class="prettyprint lang-python"><code class="language-python" data-code="IwAgAHQAaABlACAAbABpAG4AZQBzACAAYgBlAGwAbwB3ACAAYQByAGUAIABlAHEAdQBpAHYAYQBsAGUAbgB0AAoAeABbAC4ALgAuACwAMABdACAAIwAgAHIAZQB0AHUAcgBuACAAKAAyACwAIAAzACkACgB4AFsAOgAsADoALAAwAF0AIAAjACAAcgBlAHQAdQByAG4AIAAoADIALAAgADMAKQA=" "=""><span><span class="mtk4">#&nbsp;the&nbsp;lines&nbsp;below&nbsp;are&nbsp;equivalent</span></span><br><span><span class="mtk1">x[...,</span><span class="mtk22">0</span><span class="mtk1">]&nbsp;</span><span class="mtk4">#&nbsp;return&nbsp;(2,&nbsp;3)</span></span><br><span><span class="mtk1">x[:,:,</span><span class="mtk22">0</span><span class="mtk1">]&nbsp;</span><span class="mtk4">#&nbsp;return&nbsp;(2,&nbsp;3)</span></span><br></code></pre>
+                    </div>
+                    <h4 id="explicit-indexing">Explicit indexing</h4>
+                    We can provide several list to access multiple elements at the same time.
+                    <div class="copy-wrapper">
+                        <pre class="prettyprint lang-python"><code class="language-python" data-code="IwAgAGQAaQBtAGUAbgBzAGkAbwBuACAAMAAgACgAcgBvAHcAKQAgAD0AIABbADAALAAxACwAMgBdAAoAIwAgAGQAaQBtAGUAbgBzAGkAbwBuACAAMQAgACgAYwBvAGwAKQAgAD0AIABbADAALAAxACwAMABdAAoAeABbAFsAMAAsADEALAAyAF0ALABbADAALAAxACwAMABdACwAMABdACAAIwAgAGYAaQBuAGQAIABlAGwAZQBtAGUAbgB0AHMAIABvAGYAIAAoADAALAAwACkALAAgACgAMQAsADEAKQAgAGEAbgBkACAAKAAyACwAMAApACwAIABhAGwAbAAgAHcAaQB0AGgAIABsAGEAcwB0ACAAZABpAG0AZQBuAHMAaQBvAG4AIABhAHQAIAAwAA==" "=""><span><span class="mtk4">#&nbsp;dimension&nbsp;0&nbsp;(row)&nbsp;=&nbsp;[0,1,2]</span></span><br><span><span class="mtk4">#&nbsp;dimension&nbsp;1&nbsp;(col)&nbsp;=&nbsp;[0,1,0]</span></span><br><span><span class="mtk1">x[[</span><span class="mtk22">0</span><span class="mtk1">,</span><span class="mtk22">1</span><span class="mtk1">,</span><span class="mtk22">2</span><span class="mtk1">],[</span><span class="mtk22">0</span><span class="mtk1">,</span><span class="mtk22">1</span><span class="mtk1">,</span><span class="mtk22">0</span><span class="mtk1">],</span><span class="mtk22">0</span><span class="mtk1">]&nbsp;</span><span class="mtk4">#&nbsp;find&nbsp;elements&nbsp;of&nbsp;(0,0),&nbsp;(1,1)&nbsp;and&nbsp;(2,0),&nbsp;all&nbsp;wit</span><span class="mtk4">h&nbsp;last&nbsp;dimension&nbsp;at&nbsp;0</span></span><br></code></pre>
+                    </div>
+                    <h4 id="broadcast-indexing">Broadcast indexing</h4>
+                    We can broadcast a list to a higher dimension too.
+                    <div class="copy-wrapper">
+                        <pre class="prettyprint lang-python"><code class="language-python" data-code="cgBvAHcAIAA9ACAAbgBwAC4AYQByAHIAYQB5ACgAWwBbADAALAAwAF0ALABbADEALAAxAF0AXQApACAAIwAgAGQAaQBtAGUAbgBzAGkAbwBuACAAMAAgACgAcgBvAHcAKQAKAGMAbwBsACAAPQAgAG4AcAAuAGEAcgByAGEAeQAoAFsAWwAwACwAMQBdACwAWwAwACwAMQBdAF0AKQAgACMAIABkAGkAbQBlAG4AcwBpAG8AbgAgADEAIAAoAGMAbwBsACkACgAjACAAbgBvAHQAZQAgAHQAaABlACAAcgBvAHcAIABhAG4AZAAgAGMAbwBsACAAYQByAGUAIABzAGkAbQBwAGwAeQAgAHIAZQBwAGUAYQB0AGkAbgBnACAAdABoAGUAbQBzAGUAbAB2AGUAcwAKAHgAWwBuAHAALgBhAHIAcgBhAHkAKABbADAALAAwAF0AKQBbADoALABOAG8AbgBlAF0ALABbADAALAAxAF0ALAAwAF0AIAAjACAAZQBxAHUAaQB2AGEAbABlAG4AdAAgAHQAbwAgAHgAWwByAG8AdwAsAGMAbwBsACwAMABdAA==" "=""><span><span class="mtk1">row&nbsp;=&nbsp;np.array([[</span><span class="mtk22">0</span><span class="mtk1">,</span><span class="mtk22">0</span><span class="mtk1">],[</span><span class="mtk22">1</span><span class="mtk1">,</span><span class="mtk22">1</span><span class="mtk1">]])&nbsp;</span><span class="mtk4">#&nbsp;dimension&nbsp;0&nbsp;(row)</span></span><br><span><span class="mtk1">col&nbsp;=&nbsp;np.array([[</span><span class="mtk22">0</span><span class="mtk1">,</span><span class="mtk22">1</span><span class="mtk1">],[</span><span class="mtk22">0</span><span class="mtk1">,</span><span class="mtk22">1</span><span class="mtk1">]])&nbsp;</span><span class="mtk4">#&nbsp;dimension&nbsp;1&nbsp;(col)</span></span><br><span><span class="mtk4">#&nbsp;note&nbsp;the&nbsp;row&nbsp;and&nbsp;col&nbsp;are&nbsp;simply&nbsp;repeating&nbsp;themse</span><span class="mtk4">lves</span></span><br><span><span class="mtk1">x[np.array([</span><span class="mtk22">0</span><span class="mtk1">,</span><span class="mtk22">0</span><span class="mtk1">])[:,</span><span class="mtk12">None</span><span class="mtk1">],[</span><span class="mtk22">0</span><span class="mtk1">,</span><span class="mtk22">1</span><span class="mtk1">],</span><span class="mtk22">0</span><span class="mtk1">]&nbsp;</span><span class="mtk4">#&nbsp;equivalent&nbsp;to&nbsp;x[row,col,0]</span></span><br></code></pre>
+                    </div>
+                    <h4 id="partial-dimension-indexing">Partial dimension indexing</h4>
+                    The rest dimensions are kept consistent
+                    <div class="copy-wrapper">
+                        <pre class="prettyprint lang-python"><code class="language-python" data-code="eABbADAAXQAgACMAIAByAGUAdAB1AHIAbgAgAHIAbwB3ACAAMAAgAHcAaQB0AGgAIABzAGgAYQBwAGUAIAAoADMALAAgADEAKQA=" "=""><span><span class="mtk1">x[</span><span class="mtk22">0</span><span class="mtk1">]&nbsp;</span><span class="mtk4">#&nbsp;return&nbsp;row&nbsp;0&nbsp;with&nbsp;shape&nbsp;(3,&nbsp;1)</span></span><br></code></pre>
+                    </div>
+                    We can also select partial dimension with another array/list
+                    <div class="copy-wrapper">
+                        <pre class="prettyprint lang-python"><code class="language-python" data-code="eABbAG4AcAAuAHoAZQByAG8AcwAoAFsANQAsADUAXQApAC4AYQBzAHQAeQBwAGUAKABuAHAALgBpAG4AdAApAF0AIAAjACAAcgBlAHQAdQByAG4AIAAoADUALAAgADUALAAgADMALAAgADEAKQAsACAAcwBlAGwAZQBjAHQAIAB0AGgAZQAgAHIAbwB3ACAAMAAgAG4AeQAgACgANQAsACAANQApACAAdABpAG0AZQBzAA==" "=""><span><span class="mtk1">x[np.zeros([</span><span class="mtk22">5</span><span class="mtk1">,</span><span class="mtk22">5</span><span class="mtk1">]).astype(np.</span><span class="mtk12">int</span><span class="mtk1">)]&nbsp;</span><span class="mtk4">#&nbsp;return&nbsp;(5,&nbsp;5,&nbsp;3,&nbsp;1),&nbsp;select&nbsp;the&nbsp;row&nbsp;0&nbsp;ny&nbsp;(5,&nbsp;5)&nbsp;</span><span class="mtk4">times</span></span><br></code></pre>
+                    </div>
+                </div>
+    </article>
+
+    <hr>
+
+    <!--Footer-->
+    <div id="footer-placeholder"></div>
+
+    <!-- Header and footer scripts -->
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("../../nav-post.html");
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#footer-placeholder").load("../../footer.html");
+        });
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../../js/clean-blog.min.js"></script>
+
+    <!-- tag -->
+    <script src="../../js/blog-bundle.min.js"></script>
+
+</body>
+
+</html>
