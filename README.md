@@ -5,7 +5,7 @@ This personal github blog is developed by [Alice](https://github.com/AliceLuo101
 ## Preview
 [Alice's blog](https://aliceluo1016.github.io/alice-blog/)
 
-[Max's blog](https://mli0603.github.io/)
+[Max's blog](https://mli0603.github.io/blog/)
 
 ## Functionality
 | Functionality  | Status |
