@@ -37,21 +37,7 @@ After downloading, simply edit the HTML and CSS files included with the template
 
 After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
 
-#### Gulp Tasks
-
-- `gulp` the default task that builds everything
-- `gulp watch` browserSync opens the project in your default browser and live reloads when changes are made
-- `gulp css` compiles SCSS files into CSS and minifies the compiled CSS
-- `gulp js` minifies the themes JS file
-- `gulp vendor` copies dependencies from node_modules to the vendor directory
-
-You must have npm and Gulp installed globally on your machine in order to use these features.
-
 ### Third-party packages/Dependencies
 In order to use Javascript third-party pacakges, it needs to be browser compatible. You can see [browserify](https://github.com/browserify/browserify) for more details.
 
-`watchify -t brfs js/blog-post.js -o js/blog-bundle.js` is required before `gulp dev` to make the javascript browser compatible. 
-
-## Copyright and License
-
-Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-clean-blog/blob/gh-pages/LICENSE) license.
+`watchify -t brfs js/blog-post.js -o js/blog-bundle.js` is required before `npm start` to make the javascript browser compatible. 
