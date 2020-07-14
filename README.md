@@ -22,10 +22,11 @@ This personal github blog is developed by [Alice](https://github.com/AliceLuo101
 ## Download and Installation
 
 To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/clean-blog/)
+
+* [Download the latest release on Start Bootstrap](https://startbootstrap.com/themes/clean-blog/)
 * Install via npm: `npm i startbootstrap-clean-blog`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-clean-blog.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-clean-blog)
+* Clone the repo: `git clone https://github.com/StartBootstrap/startbootstrap-clean-blog.git`
+* [Fork, Clone, or Download on GitHub](https://github.com/StartBootstrap/startbootstrap-clean-blog)
 
 ## Usage
 
@@ -37,7 +38,4 @@ After downloading, simply edit the HTML and CSS files included with the template
 
 After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
 
-### Third-party packages/Dependencies
-In order to use Javascript third-party pacakges, it needs to be browser compatible. You can see [browserify](https://github.com/browserify/browserify) for more details.
 
-`watchify -t brfs js/blog-post.js -o js/blog-bundle.js` is required before `npm start` to make the javascript browser compatible. 
