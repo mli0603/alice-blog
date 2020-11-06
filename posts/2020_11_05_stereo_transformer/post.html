@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>It's a bit of Max</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+
+    <!-- jQuery CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=cpp"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
+        async></script>
+
+    <!-- Custom styles for this template -->
+    <link href="../../css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+<style type="text/css">
+    kbd {
+        color: #FFF;
+        background-color: lightblue;
+    }
+
+    pre {
+        font-size: 15px;
+        tab-size: 4;
+        white-space: pre;
+        /* font-weight: 800;
+		  	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;*/
+    }
+
+    .img-fluid {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    iframe {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+</style>
+
+<body>
+
+    <!--Navigation bar-->
+    <div id="nav-placeholder"></div>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../default.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-heading">
+                        <h1 id="title">Revisiting Stereo Depth Estimation From a Sequence-to-Sequence Perspective with Transformers</h1>
+                        <h2 class="subheading" id="subheading">Stereo Transformer</h2>
+                        <span class="meta">Posted by
+                            <a href="../index.html">Max</a>
+                            on Nov 5th, 2020</span>
+                        <kbd id="tag"><a href="javascript:on_tag_post('Deep Learning')">Deep Learning</a></kbd>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <img class="img-fluid" src="./cover.jpg" alt="">
+                    <span class="caption text-muted">Result on KITTI test data.</span>
+                    <p>We have open-sourced our work <a href='https://arxiv.org/abs/2011.02910'>"Revisiting Stereo Depth Estimation From a Sequence-to-Sequence Perspective with Transformers"</a>. You can find the code on github at link <a href='https://github.com/mli0603/stereo-transformer'>https://github.com/mli0603/stereo-transformer</a>.</p>
+                    
+                    <p>Stereo depth estimation relies on optimal correspondence matching between pixels on epipolar lines in the left and right image to infer depth. Rather than matching individual pixels, in this work, we revisit the problem from a sequence-to-sequence correspondence perspective to replace cost volume construction with dense pixel matching using position information and attention. This approach, named STereo TRansformer (STTR), has several advantages: It 1) relaxes the limitation of a fixed disparity range, 2) identifies occluded regions and provides confidence of estimation, and 3) imposes uniqueness constraints during the matching process. We report promising results on both synthetic and real-world datasets and demonstrate that STTR generalizes well across different domains, even without fine-tuning.</p>
+
+                    <img class="img-fluid" src="./network_overview.png" alt="">
+                    <span class="caption text-muted">Network overview.</span>
+                </div>
+    </article>
+
+    <hr>
+
+    <!--Footer-->
+    <div id="footer-placeholder"></div>
+
+    <!-- Header and footer scripts -->
+    <script>
+        $(function () {
+            $("#nav-placeholder").load("../../nav-post.html");
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#footer-placeholder").load("../../footer.html");
+        });
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../../js/clean-blog.min.js"></script>
+
+    <!-- tag -->
+    <script src="../../js/blog-bundle.min.js"></script>
+
+</body>
+
+</html>
